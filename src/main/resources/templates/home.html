@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Corona Virus Tracker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+  </head>
+
+  <body>
+  <h1 class="container jumbotron">Corona Virus Tracker</h1>
+  <p class="jumbotron container">This shows the current reported cases for Covid-19 across the world</p>
+   <div class="jumbotron container">
+  	<h1 class="display-4 container" th:text="${latestReports}"></h1>
+  	<p class="lead container">Total Reported Cases as of today</p>
+	</div>
+     <div class="container">
+     <table>
+      <tr>
+        <th>Country</th>
+        <th>State</th>
+        <th>Total Cases Registered</th>
+        <th>Newly Added Cases From Yesterday</th>
+      </tr>
+      <tr th:each="locationStatt : ${locationStat}">
+        <td th:text="${locationStatt.country}"></td>
+        <td th:text="${locationStatt.state}"></td>
+        <td th:text="${locationStatt.latestReports}">0</td>
+        <td th:text="${locationStatt.prev}">0</td>
+      </tr>
+    </table>
+    </div>
+  
+  </body>
+
+</html>
